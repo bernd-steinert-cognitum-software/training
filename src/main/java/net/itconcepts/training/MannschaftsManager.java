@@ -8,6 +8,16 @@ import java.util.List;
  */
 public class MannschaftsManager {
 
+    private static MannschaftsManager instance;
+
+    public static MannschaftsManager getInstance() {
+        if(instance == null) {
+            instance = new MannschaftsManager();
+        }
+
+        return instance;
+    }
+
     private List<Mannschaft> mannschaftliste = new ArrayList<Mannschaft>();
 
     public void createTeam(Mannschaft mannschaft) {
