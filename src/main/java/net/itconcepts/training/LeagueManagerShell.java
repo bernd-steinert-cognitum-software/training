@@ -1,6 +1,7 @@
 package net.itconcepts.training;
 
 import com.budhash.cliche.Command;
+import com.budhash.cliche.Param;
 import com.budhash.cliche.ShellFactory;
 
 import java.io.IOException;
@@ -12,9 +13,19 @@ public class LeagueManagerShell {
 
     // commands
 
+    /**
+     * Examples:
+     * 1. > create-team 1 Bayern
+     * 2. > create-team 2 'FC Bayern'
+     * 3. > ct 3 Bonn
+     * 4. > ct 4 'Eintracht Frankfurt'
+     */
     @Command()
-    public String createTeam() {
-        return "ToDo";
+    public String createTeam(
+            @Param(name = "id", description = "id") int id,
+            @Param(name = "name", description = "the name of the team") String name) {
+
+        return "id=" + id + ", name=" + name;
     }
 
     @Command()
@@ -23,7 +34,8 @@ public class LeagueManagerShell {
     }
 
     @Command()
-    public String deleteTeam() {
+    public String deleteTeam(
+            @Param(name = "id", description = "team with id will be deleted") int id) {
         return "ToDo";
     }
 
