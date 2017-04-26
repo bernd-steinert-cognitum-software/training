@@ -22,10 +22,14 @@ public class LeagueManagerShell {
      */
     @Command()
     public String createTeam(
-            @Param(name = "id", description = "id") int id,
             @Param(name = "name", description = "the name of the team") String name) {
 
-        return "id=" + id + ", name=" + name;
+        Team team = new Team();
+        team.setName(name);
+
+        TeamManager.getInstance().addTeam(team);
+
+        return "created team: id=" + team.getId() + ", name=" + team.getName();
     }
 
     @Command()
@@ -36,6 +40,7 @@ public class LeagueManagerShell {
     @Command()
     public String deleteTeam(
             @Param(name = "id", description = "team with id will be deleted") int id) {
+        TeamManager.getInstance().removeTeam(id);
         return "ToDo";
     }
 

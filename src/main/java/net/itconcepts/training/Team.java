@@ -3,15 +3,19 @@ package net.itconcepts.training;
 /**
  * Created by skay on 25.04.2017.
  */
-public class Mannschaft {
+public class Team {
 
-    private static int idzaehler = 0;
-    private String name;
+    private static int idCounter = 0;
+
     private int id;
+    private String name;
 
-    public Mannschaft(){
-        idzaehler++;
-        id = idzaehler;
+    public Team() {
+        id = ++idCounter;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -19,12 +23,7 @@ public class Mannschaft {
     }
 
     public void setName(String name) {
-
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
     }
 
 }
