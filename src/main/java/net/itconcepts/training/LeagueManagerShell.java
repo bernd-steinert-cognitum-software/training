@@ -1,31 +1,43 @@
 package net.itconcepts.training;
 
 import com.budhash.cliche.Command;
-import com.budhash.cliche.Param;
-import com.budhash.cliche.ShellFactory;
 
-import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * This class defines the available shell commands
  */
 public class LeagueManagerShell {
+    private List<Mannschaft> mannschaftliste;
 
     // commands
 
     /**
-     * Examples:
-     * 1. > create-team 1 Bayern
-     * 2. > create-team 2 'FC Bayern'
-     * 3. > ct 3 Bonn
-     * 4. > ct 4 'Eintracht Frankfurt'
+     * Ein neues Objekt "mannschaft" wird erzeugt
+     * @return mannschaftsname wird ausgegeben
      */
     @Command()
-    public String createTeam(
-            @Param(name = "id", description = "id") int id,
-            @Param(name = "name", description = "the name of the team") String name) {
+    public String createTeam() {
+        Boolean var=true;
+        Mannschaft mannschaft = new Mannschaft();
+        Scanner scanner = new Scanner(System.in);
 
-        return "id=" + id + ", name=" + name;
+        while(var) {
+            System.out.println("Geben Sie den Namen der Mannschaft ein:");
+            String Mannschaftsname = scanner.nextLine();
+            mannschaft.setName(Mannschaftsname);
+            MannschaftsManager.getInstance().createTeam(mannschaft);
+            System.out.println("Die Mannschaft " + mannschaft.getName() + " wurde angelegt. Möchten Sie weitere Mannschaften eintragen (j - Ja oder n - Nein)");
+            String auswahl = scanner.next();
+
+            if (auswahl.equals("n")){
+                var=false;
+            }else if (auswahl.equals("j")){
+                var=true;
+            }
+        }
+        return "Die Mannschaft/en wurde angelegt.";
     }
 
     @Command()
@@ -34,9 +46,17 @@ public class LeagueManagerShell {
     }
 
     @Command()
-    public String deleteTeam(
-            @Param(name = "id", description = "team with id will be deleted") int id) {
-        return "ToDo";
+    public String deleteTeam() {
+        Mannschaft mannschaft;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welche Mannschaft möchten Sie löschen? Geben Sie die ID ein:");
+        int ID = scanner.nextInt();
+
+        mannschaft = MannschaftsManager.getInstance().getMannschaftById(ID);
+
+        MannschaftsManager.getInstance().removeTeam(mannschaft);
+
+        return "Mannschaft" + mannschaft  + "wurde gelöscht";
     }
 
 

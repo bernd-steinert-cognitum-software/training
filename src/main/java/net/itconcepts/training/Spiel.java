@@ -19,14 +19,17 @@ public class Spiel {
     }
 
     public boolean hatStattgefunden() {
+
         return hatStattgefunden;
     }
 
     public int getHeimtor() {
+
         return heimtor;
     }
 
     public int getAuswaertstor() {
+
         return auswaertstor;
     }
 
@@ -37,6 +40,7 @@ public class Spiel {
     }
 
     public Mannschaft getAuswaertsmannschaft() {
+
         return auswaertsmannschaft;
     }
 
@@ -45,14 +49,17 @@ public class Spiel {
     }
 
     public Mannschaft getHeimatmannschaft() {
+
         return heimatmannschaft;
     }
 
     public void setHeimatmannschaft(Mannschaft heimatmannschaft) {
+
         this.heimatmannschaft = heimatmannschaft;
     }
 
     public int getId() {
+
         return id;
     }
 

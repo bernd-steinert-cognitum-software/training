@@ -10,7 +10,7 @@ import java.io.IOException;
 public class LeagueManagerBootstrap {
 
     public static void main(String[] args) throws IOException {
-        ShellFactory.createConsoleShell("", "LeagueManager", new LeagueManagerShell()).commandLoop();
+        ShellFactory.createConsoleShell("", "LeagueManager\n [ct] Team erstellen\n [et] Team bearbeiten\n [dt] Team löschen", new LeagueManagerShell()).commandLoop();
     }
 
 }
