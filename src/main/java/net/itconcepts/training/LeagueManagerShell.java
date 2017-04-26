@@ -2,6 +2,8 @@ package net.itconcepts.training;
 
 import com.budhash.cliche.Command;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,25 +21,15 @@ public class LeagueManagerShell {
      */
     @Command()
     public String createTeam() {
-        Boolean var=true;
+
         Mannschaft mannschaft = new Mannschaft();
         Scanner scanner = new Scanner(System.in);
 
-        while(var) {
-            System.out.println("Geben Sie den Namen der Mannschaft ein:");
-            String Mannschaftsname = scanner.nextLine();
-            mannschaft.setName(Mannschaftsname);
-            MannschaftsManager.getInstance().createTeam(mannschaft);
-            System.out.println("Die Mannschaft " + mannschaft.getName() + " wurde angelegt. Möchten Sie weitere Mannschaften eintragen (j - Ja oder n - Nein)");
-            String auswahl = scanner.next();
-
-            if (auswahl.equals("n")){
-                var=false;
-            }else if (auswahl.equals("j")){
-                var=true;
-            }
-        }
-        return "Die Mannschaft/en wurde angelegt.";
+        System.out.println("Geben Sie den Namen der Mannschaft ein:");
+        String Mannschaftsname = scanner.nextLine();
+        mannschaft.setName(Mannschaftsname);
+        MannschaftsManager.getInstance().createTeam(mannschaft);
+        return "Die Mannschaft " + mannschaft.getName() + " wurde angelegt.";
     }
 
     @Command()
@@ -52,7 +44,6 @@ public class LeagueManagerShell {
         System.out.println("Geben Sie den neuen Mannschaftsnamen ein:");
         String MannschaftsnameNeu = scanner.next();
         mannschaft.setName(MannschaftsnameNeu);
-
 
         return "Mannschaftsname wurde in " + mannschaft.getName()  + " abgeändert";
     }
@@ -72,8 +63,15 @@ public class LeagueManagerShell {
 
     @Command
     public String listTeam() {
+        List<Mannschaft> liste = MannschaftsManager.getInstance().getMannschaftliste();
 
-        return "";
+        System.out.println("ID  Mannschaft");
+
+        for (Mannschaft m : liste) {
+            System.out.println(m.getId() + "   " + m.getName());
+        }
+
+        return null;
     }
 
     // optional commands
