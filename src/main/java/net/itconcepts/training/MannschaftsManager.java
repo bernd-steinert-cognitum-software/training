@@ -40,4 +40,8 @@ public class MannschaftsManager {
 
         return null;
     }
+
+    public List<Mannschaft> getMannschaftliste() {
+        return mannschaftliste;
+    }
 }
