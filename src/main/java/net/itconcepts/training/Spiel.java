@@ -8,8 +8,9 @@ public class Spiel {
     private static int idzaehler = 0;
     private Mannschaft heimatmannschaft;
     private Mannschaft auswaertsmannschaft;
-    private int heimtor;
-    private int auswaertstor;
+    private int heimtor = -1;
+    private int auswaertstor = -1;
+    private boolean hatStattgefunden = false;
     private int id;
 
     public Spiel(){
@@ -17,20 +18,22 @@ public class Spiel {
         id = idzaehler;
     }
 
-    public int getHeimtor() {
-        return heimtor;
+    public boolean hatStattgefunden() {
+        return hatStattgefunden;
     }
 
-    public void setHeimtor(int heimtor) {
-        this.heimtor = heimtor;
+    public int getHeimtor() {
+        return heimtor;
     }
 
     public int getAuswaertstor() {
         return auswaertstor;
     }
 
-    public void setAuswaertstor(int auswaertstor) {
+    public void setErgebnis(int heimtor, int auswaertstor) {
+        this.heimtor = heimtor;
         this.auswaertstor = auswaertstor;
+        this.hatStattgefunden = true;
     }
 
     public Mannschaft getAuswaertsmannschaft() {
