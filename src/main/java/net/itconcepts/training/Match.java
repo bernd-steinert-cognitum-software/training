@@ -39,10 +39,16 @@ public class Match {
         return awayGoals;
     }
 
-    public void setErgebnis(int homeGoals, int awayGoals) {
+    public void setResult(int homeGoals, int awayGoals) {
         this.homeGoals = homeGoals;
         this.awayGoals = awayGoals;
         this.finished = true;
+    }
+
+    public void deleteResult() {
+        this.homeGoals = -1;
+        this.awayGoals = -1;
+        this.finished = false;
     }
 
     public Team getAwayTeam() {
@@ -107,4 +113,5 @@ public class Match {
 
         return 0;
     }
+
 }

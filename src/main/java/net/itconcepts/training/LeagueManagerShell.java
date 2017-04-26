@@ -2,9 +2,7 @@ package net.itconcepts.training;
 
 import com.budhash.cliche.Command;
 import com.budhash.cliche.Param;
-import com.budhash.cliche.ShellFactory;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -86,11 +84,21 @@ public class LeagueManagerShell {
             @Param(name = "awayGoals") int awayGoals) {
 
         Match match = Season.getInstance().getMatch(matchId);
-        match.setErgebnis(homeGoals, awayGoals);
+        match.setResult(homeGoals, awayGoals);
 
         System.out.println("added result of match id=" + match.getId());
         System.out.println("home=" + match.getHomeTeam().getName() + ", goals=" + match.getHomeGoals() + ", points=" + match.getHomePoints());
         System.out.println("away=" + match.getAwayTeam().getName() + ", goals=" + match.getAwayGoals() + ", points=" + match.getAwayPoints());
+    }
+
+    @Command()
+    public void deleteResult(
+            @Param(name = "matchId") int matchId) {
+
+        Match match = Season.getInstance().getMatch(matchId);
+        match.deleteResult();
+
+        System.out.println("deleted result of match id=" + match.getId());
     }
 
 
