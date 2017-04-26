@@ -32,6 +32,10 @@ public class LeagueManagerShell {
         return "Die Mannschaft " + mannschaft.getName() + " wurde angelegt.";
     }
 
+    /**
+     * Mannschaftsname kann geändert werden
+     * @return geändert Mannschaftsname
+     */
     @Command()
     public String editTeam() {
         Mannschaft mannschaft;
@@ -48,6 +52,11 @@ public class LeagueManagerShell {
         return "Mannschaftsname wurde in " + mannschaft.getName()  + " abgeändert";
     }
 
+    /**
+     * Mannschaft kann gelöscht werden
+     * @return gelöschte Mannschaft
+     */
+
     @Command()
     public String deleteTeam() {
         Mannschaft mannschaft;
@@ -61,6 +70,11 @@ public class LeagueManagerShell {
         return "Mannschaft " + mannschaft.getName()  + " wurde gelöscht";
     }
 
+    /**
+     * Liste der vorhandenen Mannschaften mit den zugehörigen ID's
+     * @return null
+     */
+
     @Command
     public String listTeam() {
         List<Mannschaft> liste = MannschaftsManager.getInstance().getMannschaftliste();
@@ -70,6 +84,18 @@ public class LeagueManagerShell {
         for (Mannschaft m : liste) {
             System.out.println(m.getId() + "   " + m.getName());
         }
+
+        return null;
+    }
+
+    /**
+     * Spielplan wird angezeigt
+     * @return leer
+     */
+
+    @Command
+    public String listPlay(){
+        Spielplan.getInstance().createSpielplan();
 
         return null;
     }

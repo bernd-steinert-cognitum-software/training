@@ -25,12 +25,14 @@ public class Spielplan {
     }
 
     public void createSpielplan() {
+
         Boolean var = true;
         List<Mannschaft> mannschaftsliste = MannschaftsManager.getInstance().getMannschaftliste();
 
         for (Mannschaft m : mannschaftsliste) {
             int x = 0;
             if (m.getName().equals(mannschaftsliste)) {
+
 
             }
         }
