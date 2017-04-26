@@ -61,4 +61,16 @@ public class Season {
         }
         return openMatches;
     }
+
+    public List<Match> getFinishedMatches() {
+        List<Match> finishedMatches = new ArrayList<>();
+
+        for (Match match : matches) {
+            if(match.isFinished()) {
+                finishedMatches.add(match);
+            }
+        }
+        return finishedMatches;
+
+    }
 }

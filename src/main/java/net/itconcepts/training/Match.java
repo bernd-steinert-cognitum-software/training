@@ -75,10 +75,10 @@ public class Match {
 
     public int getPoints(Team team) {
         if (team == homeTeam) {
-            calculatePoints(homeGoals, awayGoals);
+            return calculatePoints(homeGoals, awayGoals);
         }
         else if (team == awayTeam) {
-            calculatePoints(awayGoals, awayGoals);
+            return calculatePoints(awayGoals, homeGoals);
         }
 
         return 0;
@@ -92,6 +92,17 @@ public class Match {
             else if (team1 == team2) {
                 return 1;
             }
+        }
+
+        return 0;
+    }
+
+    public int getGoals(Team team) {
+        if(team == homeTeam) {
+            return homeGoals;
+        }
+        else if (team == awayTeam) {
+            return awayGoals;
         }
 
         return 0;

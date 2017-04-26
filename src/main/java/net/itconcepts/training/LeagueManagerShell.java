@@ -69,10 +69,13 @@ public class LeagueManagerShell {
 
     @Command()
     public void showTable() {
-        List<Match> openMatches = Season.getInstance().getOpenMatches();
+        Table table = new Table();
+        int position = 1;
 
-        for (Match match: openMatches) {
-            System.out.println("id=" + match.getId() + ", home=" + match.getHomeTeam().getName() + ", away=" + match.getAwayTeam().getName());
+        for (TableRow tableRow: table.getTableRows()) {
+            System.out.println("pos=" + position + ", team=" + tableRow.getTeam().getName() + ", points=" + tableRow.getPoints() + ", goals=" + tableRow.getGoals());
+
+            position++;
         }
     }
 
