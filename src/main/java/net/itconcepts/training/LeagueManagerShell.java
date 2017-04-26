@@ -42,7 +42,19 @@ public class LeagueManagerShell {
 
     @Command()
     public String editTeam() {
-        return "ToDo";
+        Mannschaft mannschaft;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welchen Mannschaftsnamen möchten Sie abändern? Geben Sie die ID ein:");
+        int ID = scanner.nextInt();
+
+        mannschaft = MannschaftsManager.getInstance().getMannschaftById(ID);
+
+        System.out.println("Geben Sie den neuen Mannschaftsnamen ein:");
+        String MannschaftsnameNeu = scanner.next();
+        mannschaft.setName(MannschaftsnameNeu);
+
+
+        return "Mannschaftsname wurde in " + mannschaft.getName()  + " abgeändert";
     }
 
     @Command()
@@ -53,12 +65,16 @@ public class LeagueManagerShell {
         int ID = scanner.nextInt();
 
         mannschaft = MannschaftsManager.getInstance().getMannschaftById(ID);
-
         MannschaftsManager.getInstance().removeTeam(mannschaft);
 
-        return "Mannschaft" + mannschaft  + "wurde gelöscht";
+        return "Mannschaft " + mannschaft.getName()  + " wurde gelöscht";
     }
 
+    @Command
+    public String listTeam() {
+
+        return "";
+    }
 
     // optional commands
 
