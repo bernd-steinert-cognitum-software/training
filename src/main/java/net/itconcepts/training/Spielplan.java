@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Spielplan {
 
     private static Spielplan instance;
+    private Mannschaft m;
 
     public static Spielplan getInstance() {
         if (instance == null) {
@@ -25,18 +26,41 @@ public class Spielplan {
     }
 
     public void createSpielplan() {
-        Boolean var = true;
         List<Mannschaft> mannschaftsliste = MannschaftsManager.getInstance().getMannschaftliste();
 
-        for (Mannschaft m : mannschaftsliste) {
-            for (Mannschaft n : mannschaftsliste) {
-                if (m.getName() != n.getName()) {
-                    System.out.println(m.getName() + "   " + n.getName());
-                } else if (var = false) ;
+        System.out.println("Heimspiel  Auswärtsspiel");
+
+
+            for (Mannschaft m : mannschaftsliste) {
+
+                if (m.getName().equals(mannschaftsliste)) {
+
+                } else {
+                    System.out.println(m.getName() + "    " + mannschaftsliste.get(x).getName());
+                }
+                x++;
             }
-        }
+
+       // for (Mannschaft n : mannschaftsliste) {
+        //    int y = 0;
+
+          //  if (n.getName().equals(mannschaftsliste.get(y).getName())) {
+            //    y++;
+ //           } else System.out.println(mannschaftsliste.get(y).getName() + "  " + n.getName());
+
+
+   //     }
     }
 }
 
-
+        /*
+        for(int i = 0; i < mannschaftsliste.size(); i++) {
+            if(i == ){
+                var=false;
+            }
+            else if(mannschaftsliste == null){
+                var=false;
+            }
+        }
+    } */
 
