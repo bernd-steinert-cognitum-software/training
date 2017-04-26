@@ -1,5 +1,8 @@
 package net.itconcepts.training;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by scak on 25.04.2017.
  */
@@ -16,6 +19,12 @@ public class Spiel {
     public Spiel(){
         idzaehler++;
         id = idzaehler;
+    }
+
+    public Spiel(Mannschaft heim, Mannschaft auswaerts) {
+        this();
+        this.heimatmannschaft = heim;
+        this.auswaertsmannschaft = auswaerts;
     }
 
     public boolean hatStattgefunden() {
