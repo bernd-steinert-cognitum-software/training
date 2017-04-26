@@ -14,6 +14,11 @@ public class Team {
         id = ++idCounter;
     }
 
+    public Team(String name) {
+        this();
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

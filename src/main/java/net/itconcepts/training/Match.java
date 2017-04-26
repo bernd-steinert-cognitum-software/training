@@ -11,9 +11,9 @@ public class Match {
     private Team homeTeam;
     private Team awayTeam;
 
-    private int homeScore = -1;
-    private int awayScore = -1;
-    private boolean hatStattgefunden = false;
+    private int homeGoals = -1;
+    private int awayGoals = -1;
+    private boolean finished = false;
 
     public Match(){
         idzaehler++;
@@ -27,22 +27,22 @@ public class Match {
         this.awayTeam = away;
     }
 
-    public boolean hatStattgefunden() {
-        return hatStattgefunden;
+    public boolean isFinished() {
+        return finished;
     }
 
-    public int getHomeScore() {
-        return homeScore;
+    public int getHomeGoals() {
+        return homeGoals;
     }
 
-    public int getAwayScore() {
-        return awayScore;
+    public int getAwayGoals() {
+        return awayGoals;
     }
 
-    public void setErgebnis(int heimtor, int auswaertstor) {
-        this.homeScore = heimtor;
-        this.awayScore = auswaertstor;
-        this.hatStattgefunden = true;
+    public void setErgebnis(int homeGoals, int awayGoals) {
+        this.homeGoals = homeGoals;
+        this.awayGoals = awayGoals;
+        this.finished = true;
     }
 
     public Team getAwayTeam() {
@@ -65,4 +65,35 @@ public class Match {
         return id;
     }
 
+    public int getHomePoints() {
+        return calculatePoints(homeGoals, awayGoals);
+    }
+
+    public int getAwayPoints() {
+        return calculatePoints(awayGoals, homeGoals);
+    }
+
+    public int getPoints(Team team) {
+        if (team == homeTeam) {
+            calculatePoints(homeGoals, awayGoals);
+        }
+        else if (team == awayTeam) {
+            calculatePoints(awayGoals, awayGoals);
+        }
+
+        return 0;
+    }
+
+    private int calculatePoints(int team1, int team2) {
+        if (finished) {
+            if (team1 > team2) {
+                return 3;
+            }
+            else if (team1 == team2) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
 }

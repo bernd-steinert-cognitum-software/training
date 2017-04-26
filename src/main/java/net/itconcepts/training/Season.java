@@ -8,6 +8,17 @@ import java.util.List;
  */
 public class Season {
 
+    private static Season instance;
+
+    public static Season getInstance() {
+        if(instance == null) {
+            instance = new Season();
+        }
+
+        return instance;
+    }
+
+
     private List<Match> matches;
 
     public void startNewSeason() {
@@ -27,7 +38,27 @@ public class Season {
         }
     }
 
+    public Match getMatch(int id) {
+        for (Match match : matches) {
+            if (match.getId() == id) {
+                return match;
+            }
+        }
+        return null;
+    }
+
     public List<Match> getMatches() {
         return matches;
+    }
+
+    public List<Match> getOpenMatches() {
+        List<Match> openMatches = new ArrayList<>();
+
+        for (Match match : matches) {
+            if(!match.isFinished()) {
+                openMatches.add(match);
+            }
+        }
+        return openMatches;
     }
 }

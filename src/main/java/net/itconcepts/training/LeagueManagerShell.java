@@ -5,6 +5,7 @@ import com.budhash.cliche.Param;
 import com.budhash.cliche.ShellFactory;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * This class defines the available shell commands
@@ -40,8 +41,53 @@ public class LeagueManagerShell {
     @Command()
     public String deleteTeam(
             @Param(name = "id", description = "team with id will be deleted") int id) {
-        TeamManager.getInstance().removeTeam(id);
-        return "ToDo";
+
+        TeamManager teamManager = TeamManager.getInstance();
+        Team team = teamManager.getTeam(id);
+
+        teamManager.removeTeam(team);
+
+        return "deleted team: id=" + team.getId() + ", name=" + team.getName();
+    }
+
+    @Command()
+    public String startNewSeason() {
+        Season season = Season.getInstance();
+        season.startNewSeason();
+
+        return "started new season with " + TeamManager.getInstance().getTeams().size() + " teams and " + season.getMatches().size() + " matches";
+    }
+
+    @Command()
+    public void listOpenMatches() {
+        List<Match> openMatches = Season.getInstance().getOpenMatches();
+
+        for (Match match: openMatches) {
+            System.out.println("id=" + match.getId() + ", home=" + match.getHomeTeam().getName() + ", away=" + match.getAwayTeam().getName());
+        }
+    }
+
+    @Command()
+    public void showTable() {
+        List<Match> openMatches = Season.getInstance().getOpenMatches();
+
+        for (Match match: openMatches) {
+            System.out.println("id=" + match.getId() + ", home=" + match.getHomeTeam().getName() + ", away=" + match.getAwayTeam().getName());
+        }
+    }
+
+    @Command()
+    public void setResult(
+            @Param(name = "matchId") int matchId,
+            @Param(name = "homeGoals") int homeGoals,
+            @Param(name = "awayGoals") int awayGoals) {
+
+        Match match = Season.getInstance().getMatch(matchId);
+        match.setErgebnis(homeGoals, awayGoals);
+
+        System.out.println("added result of match id=" + match.getId());
+        System.out.println("home=" + match.getHomeTeam().getName() + ", goals=" + match.getHomeGoals() + ", points=" + match.getHomePoints());
+        System.out.println("away=" + match.getAwayTeam().getName() + ", goals=" + match.getAwayGoals() + ", points=" + match.getAwayPoints());
     }
 
 
@@ -54,7 +100,15 @@ public class LeagueManagerShell {
 
     @Command(description = "loads data from file")
     public String load() {
-        return "ToDo";
+        TeamManager teamManager = TeamManager.getInstance();
+        teamManager.addTeam(new Team("Borussia Dortmund"));
+        teamManager.addTeam(new Team("FC Bayern München"));
+        teamManager.addTeam(new Team("Barfuß Bonn"));
+        teamManager.addTeam(new Team("Eintracht Frankfurt"));
+
+        Season.getInstance().startNewSeason();
+
+        return "done";
     }
 
     @Command(description = "saves data to a file")
