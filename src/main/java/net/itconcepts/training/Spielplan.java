@@ -30,11 +30,13 @@ public class Spielplan {
         Boolean var = true;
         List<Mannschaft> mannschaftsliste = MannschaftsManager.getInstance().getMannschaftliste();
 
-        System.out.println("Heimspiel\tAuswärtsspiel");
+        //System.out.println("Heimspiel\tAuswärtsspiel");
         for (Mannschaft m : mannschaftsliste) {
             for (Mannschaft n : mannschaftsliste) {
                 if (m.getName() != n.getName()) {
-                    System.out.println(m.getName() + "\t" + n.getName());
+                    Spiel spiel = new Spiel(m, n);
+                    spielplanliste.add(spiel);
+                    //System.out.println(m.getName() + "\t" + n.getName());
                 } else if (var = false);
             }
         }
