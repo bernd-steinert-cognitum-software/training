@@ -25,28 +25,18 @@ public class Spielplan {
     }
 
     public void createSpielplan() {
-
         Boolean var = true;
         List<Mannschaft> mannschaftsliste = MannschaftsManager.getInstance().getMannschaftliste();
 
         for (Mannschaft m : mannschaftsliste) {
-            int x = 0;
-            if (m.getName().equals(mannschaftsliste)) {
-
-
+            for (Mannschaft n : mannschaftsliste) {
+                if (m.getName() != n.getName()) {
+                    System.out.println(m.getName() + "   " + n.getName());
+                } else if (var = false) ;
             }
         }
     }
 }
 
-        /*
-        for(int i = 0; i < mannschaftsliste.size(); i++) {
-            if(i == ){
-                var=false;
-            }
-            else if(mannschaftsliste == null){
-                var=false;
-            }
-        }
-    } */
+
 
