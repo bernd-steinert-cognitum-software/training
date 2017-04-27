@@ -117,6 +117,8 @@ public class LeagueManagerShell {
 
         spiel.setErgebnis(Spielheimtor, Spielauswaertstor);
 
+        System.out.println("Hoffentlich funktioniert es jetzt");
+
         return "Spiel-ID: " + spiel.getId() + "\nErgebnis: " + spiel.getHeimatmannschaft().getName() + " " + spiel.getAuswaertsmannschaft().getName() + " " + spiel.getHeimtor() + " : " + spiel.getAuswaertstor();
     }
 
