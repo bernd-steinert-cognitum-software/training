@@ -1,6 +1,7 @@
 package net.itconcepts.training;
 
 import com.budhash.cliche.Command;
+import sun.security.provider.ConfigFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,17 +110,14 @@ public class LeagueManagerShell {
 
         spiel = Spielplan.getInstance().getSpielById(IDerg);
 
-        System.out.println("Bitte geben Sie das Ergebnis des ausgewählten Spiels ein (Heimtor Auswärtstor");
-        int Spielergebnis = scanner.nextInt();
+        System.out.println("Heimtor:");
+        int Spielheimtor = scanner.nextInt();
+        System.out.println("Auswärtstor:");
+        int Spielauswaertstor = scanner.nextInt();
 
-        /*
-        Spiel spiel2;
-        spiel2.setErgebnis();
-        spiel2.getHeimtor();
-        spiel2.getAuswaertstor();
-        */
-        return "" + spiel.getId();
+        spiel.setErgebnis(Spielheimtor, Spielauswaertstor);
 
+        return "Spiel-ID: " + spiel.getId() + "\nErgebnis: " + spiel.getHeimatmannschaft().getName() + " " + spiel.getAuswaertsmannschaft().getName() + " " + spiel.getHeimtor() + " : " + spiel.getAuswaertstor();
     }
 
 
