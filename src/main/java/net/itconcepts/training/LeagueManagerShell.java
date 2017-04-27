@@ -122,6 +122,21 @@ public class LeagueManagerShell {
         return "Spiel-ID: " + spiel.getId() + "\nErgebnis: " + spiel.getHeimatmannschaft().getName() + " " + spiel.getAuswaertsmannschaft().getName() + " " + spiel.getHeimtor() + " : " + spiel.getAuswaertstor();
     }
 
+    @Command
+    public String zeigTabelle(){
+        System.out.println("Tabelle");
+        Tabelle tabelle = new Tabelle();
+        Mannschaft mannschaft;
+
+        List<Mannschaft> liste = MannschaftsManager.getInstance().getMannschaftliste();
+
+        for (Mannschaft m : liste) {
+            System.out.println(m.getId() + "   " + m.getName());
+        }
+
+        return null;
+    }
+
 
 
     // optional commands
