@@ -102,9 +102,27 @@ public class LeagueManagerShell {
 
     @Command
     public String setErgebnisse(){
+        Spiel spiel;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ID auswählen");
+        int IDerg = scanner.nextInt();
 
-        return null;
+        spiel = Spielplan.getInstance().getSpielById(IDerg);
+
+        System.out.println("Bitte geben Sie das Ergebnis des ausgewählten Spiels ein (Heimtor Auswärtstor");
+        int Spielergebnis = scanner.nextInt();
+
+        /*
+        Spiel spiel2;
+        spiel2.setErgebnis();
+        spiel2.getHeimtor();
+        spiel2.getAuswaertstor();
+        */
+        return "" + spiel.getId();
+
     }
+
+
 
     // optional commands
 

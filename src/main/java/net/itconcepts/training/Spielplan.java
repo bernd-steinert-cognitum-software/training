@@ -1,5 +1,7 @@
 package net.itconcepts.training;
 
+import sun.security.provider.ConfigFile;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,6 +44,19 @@ public class Spielplan {
             }
         }
     }
+
+    public Spiel getSpielById(int id) {
+        for (Spiel s : this.spielplanliste) {
+            if(s.getId() == id) {
+                return s;
+            }
+        }
+
+        return null;
+    }
+
+
+
 }
 
 
