@@ -126,7 +126,6 @@ public class LeagueManagerShell {
     public String zeigTabelle(){
         System.out.println("Tabelle");
         Tabelle tabelle = new Tabelle();
-        Mannschaft mannschaft;
 
         List<Mannschaft> liste = MannschaftsManager.getInstance().getMannschaftliste();
 
