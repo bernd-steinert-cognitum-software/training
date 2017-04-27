@@ -21,6 +21,7 @@ public class Spielplan {
     private List<Spiel> spielplanliste = new ArrayList<Spiel>();
 
     public List<Spiel> getSpielplanliste() {
+
         return spielplanliste;
     }
 
@@ -30,16 +31,15 @@ public class Spielplan {
         Boolean var = true;
         List<Mannschaft> mannschaftsliste = MannschaftsManager.getInstance().getMannschaftliste();
 
-        System.out.println("Heimspiel\tAuswärtsspiel");
         for (Mannschaft m : mannschaftsliste) {
             for (Mannschaft n : mannschaftsliste) {
                 if (m.getName() != n.getName()) {
-                    System.out.println(m.getName() + "\t" + n.getName());
+                    System.out.print(m.getName() + "\t" + n.getName() + " ");
+                    Spiel spiel = new Spiel(m, n);
+                    spielplanliste.add(spiel);
+                    System.out.println(spiel.getId());
                 } else if (var = false);
             }
         }
     }
 }
-
-
-

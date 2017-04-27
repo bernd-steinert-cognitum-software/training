@@ -100,6 +100,12 @@ public class LeagueManagerShell {
         return null;
     }
 
+    @Command
+    public String setErgebnisse(){
+
+        return null;
+    }
+
     // optional commands
 
     @Command(description = "print statistics")

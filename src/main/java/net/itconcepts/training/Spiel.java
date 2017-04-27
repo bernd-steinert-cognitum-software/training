@@ -46,6 +46,8 @@ public class Spiel {
         this.heimtor = heimtor;
         this.auswaertstor = auswaertstor;
         this.hatStattgefunden = true;
+
+
     }
 
     public Mannschaft getAuswaertsmannschaft() {
