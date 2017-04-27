@@ -119,11 +119,6 @@ public class LeagueManagerShell {
 
     // optional commands
 
-    @Command(description = "print statistics")
-    public String statistics() {
-        return "ToDo";
-    }
-
     @Command(description = "loads data from file")
     public String load() {
         TeamManager teamManager = TeamManager.getInstance();
@@ -135,11 +130,6 @@ public class LeagueManagerShell {
         Season.getInstance().startNewSeason();
 
         return "done";
-    }
-
-    @Command(description = "saves data to a file")
-    public String save() {
-        return "ToDo";
     }
 
 }
