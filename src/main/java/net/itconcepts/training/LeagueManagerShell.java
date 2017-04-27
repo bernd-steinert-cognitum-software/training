@@ -32,8 +32,14 @@ public class LeagueManagerShell {
     }
 
     @Command()
-    public String editTeam() {
-        return "ToDo";
+    public String editTeam(
+            @Param(name = "id", description = "team with id will be edited") int id,
+            @Param(name = "name", description = "the name of the team") String name) {
+
+        Team team = TeamManager.getInstance().getTeam(id);
+        team.setName(name);
+
+        return "updated team: id=" + team.getId() + ", name=" + team.getName();
     }
 
     @Command()
@@ -57,7 +63,7 @@ public class LeagueManagerShell {
     }
 
     @Command()
-    public void listOpenMatches() {
+    public void showOpenMatches() {
         List<Match> openMatches = Season.getInstance().getOpenMatches();
 
         for (Match match: openMatches) {
@@ -74,6 +80,15 @@ public class LeagueManagerShell {
             System.out.println("pos=" + position + ", team=" + tableRow.getTeam().getName() + ", points=" + tableRow.getPoints() + ", goals=" + tableRow.getGoals());
 
             position++;
+        }
+    }
+
+    @Command()
+    public void showTeams() {
+        List<Team> teams = TeamManager.getInstance().getTeams();
+
+        for (Team team: teams) {
+            System.out.println("id=" + team.getId() + ", name=" + team.getName());
         }
     }
 
